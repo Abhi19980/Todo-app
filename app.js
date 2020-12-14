@@ -8,7 +8,7 @@ todoButton.addEventListener('click', addTodo);
 
 //Functions
 
-function andTodo(event) {
+function addTodo(event) {
   //prevent form from submitting
   event.preventDefault();
   //Todo DIV
@@ -25,7 +25,7 @@ function andTodo(event) {
   completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
   //CHECK trash BUTTON
-  const trashButton = document.createElement('button');
+  const trashButton = document.createElement("button");
   trashButton.innerHTML = '<i class="fas fa-trash"></i>';
   trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
