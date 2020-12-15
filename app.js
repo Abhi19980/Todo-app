@@ -1,10 +1,11 @@
 //Selectors
-const todoInput = document.querySelector('.todo-input');
-const todoButton = document.querySelector('.todo-input');
-const todoList = document.querySelector('.todo-list');
+const todoInput = document.querySelector(".todo-input");
+const todoButton = document.querySelector(".todo-input");
+const todoList = document.querySelector(".todo-list");
 
 //Event Listeners
-todoButton.addEventListener('click', addTodo);
+todoButton.addEventListener("click", addTodo);
+todoList.addEventListener('click', deleteCheck);
 
 //Functions
 
@@ -31,4 +32,10 @@ function addTodo(event) {
   todoDiv.appendChild(trashButton);
   //APPEND TO LIST
   todoList.appendChild(todoDiv);
+  //Clear Todo INPUT VALUE
+  todoInput.value = "";
 } 
+
+function deleteCheck(e){
+  console.log(e.target);
+}
