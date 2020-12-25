@@ -49,7 +49,7 @@ function deleteCheck(e) {
     //ANIMATION
     todo.classList.add("fall");
     removeLocalTodos(todo);
-    todo.addEventListener("transitionend", function(){
+    todo.addEventListener("transitionend", function() {
       todo.remove();
     });
   }
@@ -64,14 +64,14 @@ function deleteCheck(e) {
 function filterTodo(e) {
   const todos = todoList.childNodes;
   todos.forEach(function(todo) {
-    switch(e.target.value){
+    switch (e.target.value){
       case "all":
         todo.style.display = "flex";
         break;
       case "completed":
         if(todo.classList.contains("completed")) {
           todo.style.display = "flex";
-        }else {
+        } else {
           todo.style.display = "none";
         }
         break;
@@ -86,10 +86,10 @@ function filterTodo(e) {
   });
 }
 
-function saveLocalTodos(todo){
+function saveLocalTodos(todo) {
   //CHECK---HEY DO I already have thing in there?
   let todos;
-  if(localStorage.getItem("todos") === null){
+  if (localStorage.getItem("todos") === null) {
     todos = [];
   } else {
     todos = JSON.parse(localStorage.getItem("todos"));
@@ -112,7 +112,7 @@ function getTodos() {
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
     //Create LI
-    const newTodo = document.createElement("div");
+    const newTodo = document.createElement("li");
     newTodo.innerText = todo;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
@@ -142,4 +142,5 @@ function removeLocalTodos(todo) {
   }
   const todoIndex = todo.children[0].innerText;
   todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
