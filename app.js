@@ -48,6 +48,7 @@ function deleteCheck(e) {
     const todo = item.parentElement;
     //ANIMATION
     todo.classList.add("fall");
+    removeLocalTodos(todo);
     todo.addEventListener("transitionend", function(){
       todo.remove();
     });
@@ -120,7 +121,7 @@ function getTodos() {
     const completedButton = document.createElement("button");
     completedButton.innerHTML = '<i class="fas fa-check"></i>';
     completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(CompleteButton);
+    todoDiv.appendChild(completedButton);
     //CHECK trash BUTTON
     const trashButton = document.createElement("button");
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
@@ -129,4 +130,16 @@ function getTodos() {
     //APPEND TO LIST
     todoList.appendChild(todoDiv);
   });
+}
+
+function removeLocalTodos(todo) {
+  //CHECK---HEY Do I already have thing in there?
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  const todoIndex = todo.children[0].innerText;
+  todos.splice(todos.indexOf(todoIndex), 1);
 }
